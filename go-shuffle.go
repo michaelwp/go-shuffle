@@ -1,5 +1,9 @@
 package go_shuffle
 
+/**
+v.1.2.0
+*/
+
 import (
 	"math/rand"
 	"time"
