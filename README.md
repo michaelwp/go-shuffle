@@ -1,17 +1,14 @@
-# go-shuffle v1.0.0
+# go-shuffle v1.2.1
 
 Ini adalah package bahasa pemrograman go sederhana untuk mengacak susunan list array.
-
-### func Start()
-
-```go
-func (l List) Start(t Times) List
-```
 
 ### func Shuffle()
 
 ```go
 func (l List) Shuffle() List
+```
+```go
+func (l ListTimes) Shuffle() List
 ```
 
 ### Instalasi
@@ -25,20 +22,24 @@ package main
 
 import (
 	"fmt"
-	go_shuffle "github.com/michaelwp/go-shuffle"
+	goshuffle "github.com/michaelwp/go-shuffle"
 )
 
 func main()  {
-	var list = go_shuffle.List{1,"a",3,"z",5}
+	var list = goshuffle.List{1,"a",3,"z",5}
+	var listTimes = goshuffle.ListTimes{
+		List:  list,
+		Times: 5,
+	}
 
 	fmt.Println(list.Shuffle())
-	fmt.Println(list.Start(5))
+	fmt.Println(listTimes.Shuffle())
 }
 ```
 
 #### Hasil
 
 ```text
-[3 z a 5 1]
-[[a 1 z 3 5] [5 a 1 z 3] [1 5 3 a z] [5 z 1 3 a] [z 1 3 a 5]]
+[a 3 z 5 1]
+[[5 1 3 z a] [3 5 a 1 z] [z 3 5 a 1] [a 1 3 5 z] [3 5 1 z a]]
 ```
