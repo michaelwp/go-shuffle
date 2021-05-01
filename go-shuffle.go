@@ -1,7 +1,7 @@
 package go_shuffle
 
-/**
-v.1.3.0
+/*
+author: michael.wenceslaus@gmail.com
 */
 
 import (
@@ -15,6 +15,10 @@ type ListTimes struct {
 	Times int
 }
 
+// Shuffle array list in 'n' times
+// example :
+// var list = goshuffle.List{1,"a",3,"z",5}
+// fmt.Println(list.Shuffle())
 func (l ListTimes) Shuffle() List {
 	var result []interface{}
 
@@ -32,6 +36,15 @@ func (l ListTimes) Shuffle() List {
 	return result
 }
 
+// Shuffle array 1 times
+// example :
+// var list = goshuffle.List{1,"a",3,"z",5}
+//	var listTimes = goshuffle.ListTimes{
+//		List:  list,
+//		Times: 5,
+//	}
+//
+//	fmt.Println(listTimes.Shuffle())
 func (l List) Shuffle() List {
 	var length = len(l) - 1
 

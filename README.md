@@ -1,4 +1,4 @@
-# go-shuffle v1.2.1
+# go-shuffle v1.2.2
 
 Ini adalah package bahasa pemrograman go sederhana untuk mengacak susunan list array.
 
