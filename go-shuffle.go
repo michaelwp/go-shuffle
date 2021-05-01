@@ -1,7 +1,7 @@
 package go_shuffle
 
 /**
-v.1.2.0
+v.1.3.0
 */
 
 import (
@@ -10,19 +10,17 @@ import (
 )
 
 type List []interface{}
-type Times int
-
-type Shuffle interface {
-	Start() List
-	Times(t Times) List
+type ListTimes struct {
+	List  List
+	Times int
 }
 
-func (l List) Times(t Times) List {
+func (l ListTimes) Shuffle() List {
 	var result []interface{}
 
-	for i := 0; i < int(t); i++ {
+	for i := 0; i < l.Times; i++ {
 		var r []interface{}
-		res := l.Start()
+		res := l.List.Shuffle()
 
 		for _, x := range res {
 			r = append(r, x)
@@ -34,7 +32,7 @@ func (l List) Times(t Times) List {
 	return result
 }
 
-func (l List) Start() List {
+func (l List) Shuffle() List {
 	var length = len(l) - 1
 
 	// set new random seed

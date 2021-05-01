@@ -5,46 +5,48 @@ import (
 	"testing"
 )
 
-func TestList_Times(t *testing.T) {
-	type args struct {
-		t Times
+func TestListTimes_Shuffle(t *testing.T) {
+	type fields struct {
+		List  List
+		Times int
 	}
 	tests := []struct {
-		name string
-		l    List
-		args args
-		want int
+		name   string
+		fields fields
+		want   int
 	}{
 		// test cases.
 		{
-			name: "start",
-			l:    []interface{}{1, 2, 3, 4, 5},
-			args: args{t: 5},
+			name: "ListTimes Shuffle",
+			fields: fields{
+				List:  List{1, 2, 3, 4, 5},
+				Times: 5,
+			},
 			want: 5,
 		},
 		{
-			name: "start",
-			l:    []interface{}{1, 2, 3, 4, 5},
-			args: args{t: 0},
-			want: 0,
-		},
-		{
-			name: "start",
-			l:    []interface{}{"a", "b", "c", "d", "e", "f"},
-			args: args{t: 6},
-			want: 6,
+			name: "ListTimes Shuffle",
+			fields: fields{
+				List:  List{"a", "b", "c", "d", "e"},
+				Times: 3,
+			},
+			want: 3,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := len(tt.l.Times(tt.args.t)); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Start() = %v, want %v", got, tt.want)
+			l := ListTimes{
+				List:  tt.fields.List,
+				Times: tt.fields.Times,
+			}
+			if got := len(l.Shuffle()); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Shuffle() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestList_Start(t *testing.T) {
+func TestList_Shuffle(t *testing.T) {
 	tests := []struct {
 		name string
 		l    List
@@ -52,20 +54,20 @@ func TestList_Start(t *testing.T) {
 	}{
 		// test cases.
 		{
-			name: "shuffle",
-			l:    []interface{}{1, 2, 3, 4, 5},
-			want: []interface{}{1, 2, 3, 4, 5},
+			name: "List shuffle",
+			l:    List{1, 2, 3, 4, 5},
+			want: List{1, 2, 3, 4, 5},
 		},
 		{
-			name: "shuffle",
-			l:    []interface{}{"a", "b", "c", "d", "e"},
-			want: []interface{}{"a", "b", "c", "d", "e"},
+			name: "List shuffle",
+			l:    List{"a", "b", "c", "d", "e"},
+			want: List{"a", "b", "c", "d", "e"},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.l.Start(); reflect.DeepEqual(got, tt.want) {
-				t.Errorf("shuffle() = %v, want %v", got, tt.want)
+			if got := tt.l.Shuffle(); reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Shuffle() = %v, want %v", got, tt.want)
 			}
 		})
 	}
