@@ -14,7 +14,7 @@ func (l List) Start(t Times) []interface{} {
 
 	for i := 0; i < int(t); i++ {
 		var r []interface{}
-		res := l.shuffle()
+		res := l.Shuffle()
 
 		for _, x := range res {
 			r = append(r, x)
@@ -26,7 +26,7 @@ func (l List) Start(t Times) []interface{} {
 	return result
 }
 
-func (l List) shuffle() List {
+func (l List) Shuffle() List {
 	var length = len(l) - 1
 
 	// set new random seed

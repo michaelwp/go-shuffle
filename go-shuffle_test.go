@@ -24,6 +24,12 @@ func TestList_Start(t *testing.T) {
 		},
 		{
 			name: "start",
+			l:    []interface{}{1, 2, 3, 4, 5},
+			args: args{t: 0},
+			want: 0,
+		},
+		{
+			name: "start",
 			l:    []interface{}{"a", "b", "c", "d", "e", "f"},
 			args: args{t: 6},
 			want: 6,
@@ -58,7 +64,7 @@ func TestList_shuffle(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.l.shuffle(); reflect.DeepEqual(got, tt.want) {
+			if got := tt.l.Shuffle(); reflect.DeepEqual(got, tt.want) {
 				t.Errorf("shuffle() = %v, want %v", got, tt.want)
 			}
 		})
