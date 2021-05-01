@@ -15,7 +15,7 @@ func TestList_Start(t *testing.T) {
 		args args
 		want int
 	}{
-		// TODO: Add test cases.
+		// test cases.
 		{
 			name: "start",
 			l:    []interface{}{1, 2, 3, 4, 5},
@@ -44,7 +44,7 @@ func TestList_shuffle(t *testing.T) {
 		l    List
 		want List
 	}{
-		// TODO: Add test cases.
+		// test cases.
 		{
 			name: "shuffle",
 			l:    []interface{}{1, 2, 3, 4, 5},
