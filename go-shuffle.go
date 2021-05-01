@@ -8,8 +8,7 @@ import (
 type List []interface{}
 type Times int
 
-// Start recursive
-func (l List) Start(t Times) []interface{} {
+func (l List) Start(t Times) List {
 	var result []interface{}
 
 	for i := 0; i < int(t); i++ {
