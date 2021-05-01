@@ -8,12 +8,17 @@ import (
 type List []interface{}
 type Times int
 
-func (l List) Start(t Times) List {
+type Shuffle interface {
+	Start() List
+	Times(t Times) List
+}
+
+func (l List) Times(t Times) List {
 	var result []interface{}
 
 	for i := 0; i < int(t); i++ {
 		var r []interface{}
-		res := l.Shuffle()
+		res := l.Start()
 
 		for _, x := range res {
 			r = append(r, x)
@@ -25,7 +30,7 @@ func (l List) Start(t Times) List {
 	return result
 }
 
-func (l List) Shuffle() List {
+func (l List) Start() List {
 	var length = len(l) - 1
 
 	// set new random seed

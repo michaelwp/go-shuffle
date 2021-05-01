@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestList_Start(t *testing.T) {
+func TestList_Times(t *testing.T) {
 	type args struct {
 		t Times
 	}
@@ -37,14 +37,14 @@ func TestList_Start(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := len(tt.l.Start(tt.args.t)); !reflect.DeepEqual(got, tt.want) {
+			if got := len(tt.l.Times(tt.args.t)); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Start() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestList_shuffle(t *testing.T) {
+func TestList_Start(t *testing.T) {
 	tests := []struct {
 		name string
 		l    List
@@ -64,7 +64,7 @@ func TestList_shuffle(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.l.Shuffle(); reflect.DeepEqual(got, tt.want) {
+			if got := tt.l.Start(); reflect.DeepEqual(got, tt.want) {
 				t.Errorf("shuffle() = %v, want %v", got, tt.want)
 			}
 		})
